@@ -253,6 +253,8 @@ class RadliteModel():
             if self.get_attr("verbose"): #Verbal output, if so desired
                 print("Will prepare a circular-formatted image cube...")
                 print("")
+            self._set_attr(attrname="executable",
+                            attrval=self.get_attr("exe_path")+"RADlite")
     #
 
 
@@ -529,7 +531,7 @@ class RadliteModel():
         #Delete working directory for cores
         if self.get_attr("verbose"): #Verbal output, if so desired
             print("Deleting working directory used for cores...")
-        comm = subprocess.call(["rm", "-r", workingdir]) #Erase working dir.
+        #comm = subprocess.call(["rm", "-r", workingdir]) #Erase working dir.
 
 
         ##Below Section: FINISH and EXIT
@@ -618,8 +620,8 @@ class RadliteModel():
         if self.get_attr("image") == 2:
             #Move circular 3D image cube output produced by this core
             comm = subprocess.call(["mv",
-                            cpudir+"/lineposvelcirc_moldata.dat",
-                            outputdir+"/lineposvelcirc_moldata_"+str(pind)+".dat"])
+                            cpudir+"/lineposvel_moldata.dat",
+                            outputdir+"/lineposvel_moldata_"+str(pind)+".dat"])
 
 
         ##Below Section: EXIT
@@ -1898,14 +1900,14 @@ class RadliteModel():
         if self.get_attr("image") == 2: #For 3D image cube
             npix = int(np.ceil(self.get_attr("imwidth")
                                     /1.0/self.get_attr("ssampling")))
-            imwidth_cm = self.get_attr("imwidth")/1.0/au0
+            imwidth_au = self.get_attr("imwidth")
             writestr += "{0:<8d}{1:<50s}\n".format(npix, "Nr of x pixels")
             writestr += "{0:<8d}{1:<50s}\n".format(npix, "Nr of y pixels")
-            writestr += "{0:<8d}image size in cm?\n".format(1)
+            writestr += "{0:<8d}Is image size in au?\n".format(1)
             writestr += "{0:<8.1e}{1:<50s}\n".format(
-                            imwidth_cm, "size x direction")
+                            imwidth_au, "size x direction")
             writestr += "{0:<8.1e}{1:<50s}\n".format(
-                            imwidth_cm, "size y direction")
+                            imwidth_au, "size y direction")
             writestr += "{0:<8d}Phi offset?\n".format(0)
             writestr += "{0:<8d}x offset?\n".format(0)
             writestr += "{0:<8d}y offset?\n".format(0)
