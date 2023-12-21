@@ -1,1 +1,1 @@
-This is a straight copy from Klaus Pontoppidan's pyradlite (https://github.com/pontoppi/radlite) but with some small edits to radlite.py and radmc.py to make it work with radmc3dPy
+This is a straight copy from Klaus Pontoppidan's pyradlite (https://github.com/pontoppi/radlite) but with some small edits to radlite.py and radmc.py to make it work with radmc3dPy, and implementation of making the imaging part work. Example notebooks included to demonstrate utility.
