@@ -5,7 +5,7 @@
                     },
   "obsres":         {
                       "value":3.0,
-                      "comment":"Resolution of the observation."
+                      "comment":"Velocity resolution of the observation."
                     },
   "vsampling":      {
                       "value":1.5,

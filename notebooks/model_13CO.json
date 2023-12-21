@@ -43,7 +43,7 @@
                     },
   "image":          {
                       "value":0,
-                      "comment":"If 0, will calculate a position-velocity image cube.  If 2, will calculate a circular image."
+                      "comment":"If 0, will calculate a spectrum.  If 2, will calculate a rectangular image."
                     },
 
 
@@ -52,7 +52,7 @@
                       "comment":"If true, will perform level population calculations assuming local thermodynamic equilibrium (LTE).  If false, will not make this assumption."
                     },
   "molname":        {
-                      "value":"12CO",
+                      "value":"13CO",
                       "comment":"Name of the desired molecule (case sensitive, with no spaces and no special characters).  Examples: '12CO', 'H218O', 'H2O'."
                     },
   "whichop":        {
@@ -74,11 +74,11 @@
                       "comment":"Maximum wavelength [in microns] of molecular lines to include."
                     },
   "min_abun":       {
-                      "value":1.0E-8,
+                      "value":1.0E-9,
                       "comment":"Minimum abundance (relative to H2, or 2H) of given molecular species to include."
                     },
   "max_abun":       {
-                      "value":1.0E-4,
+                      "value":1.7E-6,
                       "comment":"Maximum abundance (relative to H2, or 2H) of given molecular species to include."
                     },
   "min_ins":        {

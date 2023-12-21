@@ -1885,7 +1885,7 @@ class RadliteModel():
         writestr += "{0:<8d}{1:<50s}\n".format(self.get_attr("image"),
                                 "Command (0=spectrum, 2=image[3-D P/V cube])")
         writestr += "{0:<8.1f}{1:<50s}\n".format(
-                    1.0, "Distance in [pc]")
+                    1.0, "Distance - hardwired in to 1 pc")
         writestr += "{0:<8.1f}{1:<50s}\n".format(
                     self.get_attr("incl"), "Inclination [deg]")
         writestr += "{0:<8.1f}{1:<60s}\n".format(
@@ -1903,11 +1903,11 @@ class RadliteModel():
             imwidth_au = self.get_attr("imwidth")
             writestr += "{0:<8d}{1:<50s}\n".format(npix, "Nr of x pixels")
             writestr += "{0:<8d}{1:<50s}\n".format(npix, "Nr of y pixels")
-            writestr += "{0:<8d}Is image size in au?\n".format(1)
+            writestr += "{0:<8d}Image size flag (unused)\n".format(1)
             writestr += "{0:<8.1e}{1:<50s}\n".format(
-                            imwidth_au, "size x direction")
+                            1.49597870E13*imwidth_au, "size x direction [cm]")
             writestr += "{0:<8.1e}{1:<50s}\n".format(
-                            imwidth_au, "size y direction")
+                            1.49597870E13*imwidth_au, "size y direction [cm]")
             writestr += "{0:<8d}Phi offset?\n".format(0)
             writestr += "{0:<8d}x offset?\n".format(0)
             writestr += "{0:<8d}y offset?\n".format(0)
