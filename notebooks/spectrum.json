@@ -16,7 +16,7 @@
                       "comment":"If true, will print verbal descriptions of what is happening 'behind-the-scenes' whenever a method is run.  If false, will not print these descriptions out."
                     },
   "run_paths":      {
-                      "value":["rundir/outputdir/"],
+                      "value":["rundir_spectrum/outputdir/"],
                       "comment":"A list of folder(s) containing output from RADLite.  The output can be combined into a single spectrum using the RadliteSpectrum() class."
                     },
   "numcores":       {

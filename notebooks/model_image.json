@@ -66,11 +66,11 @@
 
 
   "min_mu":         {
-                      "value":4.64,
+                      "value":4.6325,
                       "comment":"Minimum wavelength [in microns] of molecular lines to include."
                     },
   "max_mu":         {
-                      "value":4.65,
+                      "value":4.6340,
                       "comment":"Maximum wavelength [in microns] of molecular lines to include."
                     },
   "min_abun":       {
@@ -96,7 +96,7 @@
                       "comment":"Frequency sampling [in km/s]."
                     },
   "ssampling":      {
-                      "value":0.1,
+                      "value":0.05,
                       "comment":"Spatial sampling [in AU]."
                     },
   "passband":       {
@@ -110,11 +110,11 @@
 
 
   "incl":           {
-                      "value":15.0,
+                      "value":45.0,
                       "comment":"Angle [in degrees] between the observer and the polar axis."
                     },
   "imwidth":       {
-                      "value":10.0,
+                      "value":5.0,
                       "comment":"Image width [in AU]."
                     },
 

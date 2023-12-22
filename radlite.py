@@ -17,6 +17,7 @@ from scipy import ndimage as ndimager
 import subprocess
 import radmc
 import radmc3dPy
+import glob
 try:
     import astropy.io.fits as fitter
 except ImportError:
@@ -65,7 +66,9 @@ welcome_message = (
     +"Rowin Meijerink\n\n"
     +"RADLite Version 1.3.0 (in Python) was written by:\n"
     +"Jamila Pegues (jamila.pegues@cfa.harvard.edu)\n"
-    +"Klaus Pontoppidan (pontoppi@stsci.edu)\n"
+    +"Klaus Pontoppidan (pontoppi@stsci.edu)\n\n"
+    +"unofficial changes to work with radmc3dPy"
+    +"Jonathan Williams (jw@hawaii.edu)\n"
     +"--------------------------------------------------\n\n")
 
 
@@ -250,8 +253,9 @@ class RadliteModel():
             self._set_attr(attrname="executable",
                             attrval=self.get_attr("exe_path")+"RADlite")
         elif self.get_attr("image") == 2: #If desired output is circ.
+            # edited by JPW to handle images
             if self.get_attr("verbose"): #Verbal output, if so desired
-                print("Will prepare a circular-formatted image cube...")
+                print("Will prepare a rectangular-formatted image cube...")
                 print("")
             self._set_attr(attrname="executable",
                             attrval=self.get_attr("exe_path")+"RADlite")
@@ -531,7 +535,7 @@ class RadliteModel():
         #Delete working directory for cores
         if self.get_attr("verbose"): #Verbal output, if so desired
             print("Deleting working directory used for cores...")
-        #comm = subprocess.call(["rm", "-r", workingdir]) #Erase working dir.
+        comm = subprocess.call(["rm", "-r", workingdir]) #Erase working dir.
 
 
         ##Below Section: FINISH and EXIT
@@ -567,6 +571,7 @@ class RadliteModel():
             > "RADLITE_core_<pind>.log", "moldata_<pind>.dat",
               ..."linespectrum_moldata_<pind>.dat", and
               ..."levelpop_moldata_<pind>.dat" are placed in outputdir.
+        Edited by JPW to handle images
         Notes: N/A
         """
         if self.get_attr("verbose"): #Verbal output, if so desired
@@ -609,19 +614,23 @@ class RadliteModel():
         comm = subprocess.call(["mv",
                             cpudir+"/moldata.dat",
                             outputdir+"/moldata_"+str(pind)+".dat"])
-        #Move line spectrum output produced by this core
-        comm = subprocess.call(["mv",
-                            cpudir+"/linespectrum_moldata.dat",
-                            outputdir+"/linespectrum_moldata_"+str(pind)+".dat"])
         #Move level population output produced by this core
         comm = subprocess.call(["mv",
                             cpudir+"/levelpop_moldata.dat",
                             outputdir+"/levelpop_moldata_"+str(pind)+".dat"])
-        if self.get_attr("image") == 2:
-            #Move circular 3D image cube output produced by this core
+        if self.get_attr("image") == 0:
+            #Move line spectrum output produced by this core
             comm = subprocess.call(["mv",
-                            cpudir+"/lineposvel_moldata.dat",
-                            outputdir+"/lineposvel_moldata_"+str(pind)+".dat"])
+                            cpudir+"/linespectrum_moldata.dat",
+                            outputdir+"/linespectrum_moldata_"+str(pind)+".dat"])
+        if self.get_attr("image") == 2:
+            #Move rectangular 3D image cube output produced by this core
+            files = glob.glob(cpudir+"lineposvel_moldata*.dat")
+            if len(files) > 0:
+                for file1 in files:
+                    comm = subprocess.call(["mv",
+                            file1, 
+                            outputdir+"/lineposvel_moldata_"+str(pind)+"_"+file1[-5]+".dat"])
 
 
         ##Below Section: EXIT
@@ -1869,6 +1878,7 @@ class RadliteModel():
         Notes: N/A
         """
         ##Below Section: BUILD string to form the spectrum input file
+        # edited by JPW to correct units for imwidth to align with fortran code
         writestr = ""
         writestr += "{0:<8d}Format number\n".format(1)
         writestr += "{0:<8d}Spectrum output style\n".format(1)
