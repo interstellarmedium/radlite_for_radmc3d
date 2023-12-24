@@ -67,7 +67,7 @@ welcome_message = (
     +"RADLite Version 1.3.0 (in Python) was written by:\n"
     +"Jamila Pegues (jamila.pegues@cfa.harvard.edu)\n"
     +"Klaus Pontoppidan (pontoppi@stsci.edu)\n\n"
-    +"unofficial changes to work with radmc3dPy"
+    +"unofficial changes to work with radmc3dPy\n"
     +"Jonathan Williams (jw@hawaii.edu)\n"
     +"--------------------------------------------------\n\n")
 
