@@ -24,7 +24,7 @@
 
 
   "run_dir":        {
-                      "value":"rundir_spectrum",
+                      "value":"rundir_image",
                       "comment":"Folder name to contain output files from any RADLite runs."
                     },
   "dodate":         {
@@ -42,7 +42,7 @@
                       "comment":"Number of cores that will be used to run RADLite.  If this number is greater than <(available number of cores for your machine) - 1>, then this number will be decreased so that it is <(available number of cores for your machine) - 1>, or <1> if there is only one core available."
                     },
   "image":          {
-                      "value":0,
+                      "value":2,
                       "comment":"If 0, will calculate a spectrum.  If 2, will calculate a rectangular image."
                     },
 
@@ -66,11 +66,11 @@
 
 
   "min_mu":         {
-                      "value":4.6,
+                      "value":4.6325,
                       "comment":"Minimum wavelength [in microns] of molecular lines to include."
                     },
   "max_mu":         {
-                      "value":4.7,
+                      "value":4.6340,
                       "comment":"Maximum wavelength [in microns] of molecular lines to include."
                     },
   "min_abun":       {
@@ -92,7 +92,7 @@
 
 
   "vsampling":      {
-                      "value":1.0,
+                      "value":1.5,
                       "comment":"Frequency sampling [in km/s]."
                     },
   "ssampling":      {
@@ -100,7 +100,7 @@
                       "comment":"Spatial sampling [in AU]."
                     },
   "passband":       {
-                      "value":100.0,
+                      "value":70.0,
                       "comment":"Range [in km/s] over which the molecular lines will be calculated (so, a given line would be calculated from -passband to +passband)."
                     },
   "vlsr":           {
@@ -110,7 +110,7 @@
 
 
   "incl":           {
-                      "value":10.0,
+                      "value":45.0,
                       "comment":"Angle [in degrees] between the observer and the polar axis."
                     },
   "imwidth":       {

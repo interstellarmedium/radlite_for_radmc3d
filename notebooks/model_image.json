@@ -110,7 +110,7 @@
 
 
   "incl":           {
-                      "value":45.0,
+                      "value":10.0,
                       "comment":"Angle [in degrees] between the observer and the polar axis."
                     },
   "imwidth":       {
