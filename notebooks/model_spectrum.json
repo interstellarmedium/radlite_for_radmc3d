@@ -66,11 +66,11 @@
 
 
   "min_mu":         {
-                      "value":4.6,
+                      "value":4.625,
                       "comment":"Minimum wavelength [in microns] of molecular lines to include."
                     },
   "max_mu":         {
-                      "value":4.7,
+                      "value":4.645,
                       "comment":"Maximum wavelength [in microns] of molecular lines to include."
                     },
   "min_abun":       {
