@@ -86,7 +86,7 @@
                       "comment":"Minimum HITRAN intensity of given molecular species to include."
                     },
   "max_Eup":        {
-                      "value":1E4,
+                      "value":3000,
                       "comment":"Maximum energy level [in cm^-1] of molecular lines to include."
                     },
 
