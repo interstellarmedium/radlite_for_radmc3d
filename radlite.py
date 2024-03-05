@@ -8,7 +8,11 @@ from exutils import func_timer
 from datetime import datetime as dater
 import json
 import matplotlib.pyplot as plt
-import multiprocessing as mp
+
+# replace multiprocessing by multiprocess to allow super classes and customize velocity field
+#import multiprocessing as mp
+import multiprocess as mp
+
 import numpy as np
 import os.path
 from os import listdir as listdirer
@@ -183,6 +187,8 @@ class RadliteModel():
             print("-"*10+"\n"+"Preparing molecular line data per core...")
             print("")
         with mp.Pool(numcores) as ppool:
+            if __name__ == '__main__':
+                mp.set_start_method('spawn')
             lpopdicts = ppool.map(self._prep_mol_forcore,
                                     range(0, numcores))
         self._set_attr(attrname="_levelpopdicts", attrval=lpopdicts)
@@ -2946,13 +2952,14 @@ class RadliteSpectrum():
             subfileshere = [{"spec":subspecfiles[bi], "mol":submolfiles[bi]}
                             for bi in range(0, numsubs)] #Files for this subrun
             with mp.Pool(numcores) as ppool:
+                if __name__ == '__main__':
+                    mp.set_start_method('spawn')
                 subdictshere = ppool.map(self._read_core_radliteoutput,
                                                 subfileshere) #Run cores
             linedict_list[ai] = [shere["line"] for shere in subdictshere]
             moldict_list[ai] = [shere["mol"] for shere in subdictshere]
             if self.get_attr("verbose"): #Verbal output, if so desired
                 print("The cores have finished extracting RADLite output!\n")
-
 
         ##Below Section: Flatten 3D (1=run, 2=subrun, 3=line) lists to 1D lists
         #For mol. line data
