@@ -912,13 +912,14 @@ class RadliteModel():
         ##Below Section: FETCH y-axis values
         yvals = self.get_attr(yattrname)
 
-
         ##Below Section: PLOT as either 2D gradient or 1D line+scatter
         ndim = len(np.asarray(yvals).shape) #Number of dimensions for plot
         if ndim == 2: #If 2D quantity (assumed axes are radius vs. theta)
             #Set desired 2D quantity to new variable z
             zattrname = yattrname
             zvals = self.get_attr(zattrname) #2D quantity
+            if zlog:
+                zvals = np.log10(zvals)
             #Extract radius and theta for x and y-axes
             yattrname = "theta"
             yvals = self.get_attr(yattrname) #y-axis values
