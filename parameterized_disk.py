@@ -4,7 +4,7 @@
 *** It includes a function getDustTemperature to avoid running radmc mctherm
 *** (which I have found creates noise and other issues when applied to the inner disk)
 *** link this to where the other radmc3dPy models are: for me this is
-*** .local/lib/python3.9/site-packages/radmc3dPy/models
+*** $HOME/.local/lib/python3.9/site-packages/radmc3dPy/models
 
 The density is given by 
 
@@ -76,10 +76,10 @@ def getDefaultParams():
         ['xres_nlev', '3', 'Number of refinement levels'],
         ['xres_nspan', '3', 'Number of the original grid cells to refine'],
         ['xres_nstep', '3', 'Number of grid cells to create in a refinement level'],
-        ['nx', '[30,50]', 'Number of grid points in the first dimension'],
-        ['xbound', '[1.0*au,1.05*au, 100.0*au]', 'Number of radial grid points'],
-        ['ny', '[10,30,30,10]', 'Number of grid points in the first dimension'],
-        ['ybound', '[0., pi/3., pi/2., 2.*pi/3., pi]', 'Number of radial grid points'],
+        ['nx', '[50,50]', 'Number of grid points in the first dimension'],
+        ['xbound', '[0.2*au, 1*au, 5.0*au]', 'Number of radial grid points'],
+        ['ny', '[20,60,60,20]', 'Number of grid points in the first dimension - asymmetric to avoid midplane blip'],
+        ['ybound', '[0., pi/3, pi/2, 2*pi/3, pi]', 'Number of radial grid points'],
         ['nz', '30', 'Number of grid points in the first dimension'],
         ['zbound', '[0., 2.0*pi]', 'Number of radial grid points'],
         ['gasspec_mol_name', "['co']", ''],
@@ -111,7 +111,8 @@ def getDefaultParams():
         ['dusttogas', '0.01', ' Dust-to-gas mass ratio'],
         ['Tmid', '100', ' Midplane temperature at 1au'],
         ['Tatm', '400', ' Atmosphere temperature at 1au'],
-        ['plT', '-0.55', ' Power law index of radial temperature dependence']]
+        ['plT', '-0.55', ' Power law index of radial temperature dependence'],
+        ['Tmax', '1500', ' Maximum gas temperature']]
 
     return defpar
 
@@ -243,11 +244,14 @@ def getDustTemperature(grid=None, ppar=None):
         for iy in range(grid.ny):
             for ix in range(grid.nx):
                 zq = 4 * hp[ix, iy, iz]
-                if np.abs(zz[iy, ix]) < zq:
+                if np.abs(zz[iy, ix]) < zq and rr[iy, ix] > ppar['rin']:
                     T[ix, iy, iz] = Tmid[ix, iy, iz] \
                         + (Tatm[ix, iy, iz] - Tmid[ix, iy, iz]) * np.sin(np.pi*zz[iy, ix]/(2*zq))**(2*delta)
                 else:
                     T[ix, iy, iz] = Tatm[ix, iy, iz]
+
+    # limit the max temperature in case of unphysical values at small radii
+    T[T > ppar['Tmax']] = ppar['Tmax']
 
     return T
 

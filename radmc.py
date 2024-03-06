@@ -17,7 +17,7 @@ class radmc_model():
         self.frequency = self.read_freq()
         self.wavelength = cst.c*1e6/self.frequency # micron
         #self.gasdensity = self.read_gasdensity()
-        #self.dustdensity = self.read_dustdensity()
+        self.dustdensity = self.read_dustdensity()
         self.dusttemperature = self.read_dusttemperature()
         self.dustopac = self.read_opacity()
         #self.pars = self.read_parameters()
