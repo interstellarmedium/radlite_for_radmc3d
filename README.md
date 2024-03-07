@@ -14,3 +14,6 @@ Note that to allow for finer gridding, which is important for the inner disk, it
 
 parameterized_disk.py is similar to ppdisk.py in the model examples of radmc3dPy but calculates the dust temperature analytically rather than relying on radmc3d mctherm (which is slow and noisy).
 Move it over to where the other radmc3dPy models are. For me, this is $HOME/.local/lib/python3.9/site-packages/radmc3dPy/models
+
+Instructions on running this version of radlite are in a notion page posted here
+https://excellent-decade-3d5.notion.site/radlite-for-radmc3d-documentation-3cce4e0e195244a0b38f4d15226a99fa
