@@ -112,7 +112,7 @@ def getDefaultParams():
         ['Tmid', '100', ' Midplane temperature at 1au'],
         ['Tatm', '400', ' Atmosphere temperature at 1au'],
         ['plT', '-0.55', ' Power law index of radial temperature dependence'],
-        ['Tmax', '1500', ' Maximum gas temperature']]
+        ['Tmax', '2500', ' Maximum gas temperature']]
 
     return defpar
 
