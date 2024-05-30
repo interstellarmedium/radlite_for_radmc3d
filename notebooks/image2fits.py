@@ -6,7 +6,7 @@ import numpy as np
 import astropy.constants as c
 from astropy.io import fits
 
-def read_and_write(path = "./rundir_image/outputdir/", filename = "lineposvel_moldata_0_1.dat", dist=140):
+def read_and_write(path = "./rundir_image/outputdir/", filename = "lineposvel_moldata_0_1.dat", dist=100):
     # load the image
     # see RADLITE/telescope.F for the format aubroutine calc_write_line_posvel
     # note units are brightness temperature = lambda**2 * F_nu / 2*k
