@@ -1,4 +1,4 @@
-This is modification of Klaus Pontoppidan's pyradlite (https://github.com/pontoppi/radlite) with small edits to radlite.py and radmc.py to make it work with radmc3dPy, and implementation of making the imaging part work. Example notebooks included to demonstrate utility.
+This is modification of Klaus Pontoppidan's pyradlite (https://github.com/pontoppi/radlite) with small edits to radlite.py and radmc.py to make it work with radmc3dPy, and implementation of making the imaging part work. Example notebooks and scripts are included to demonstrate utility (the former are more for use as a tutorial and the scripts are better for fitting to data).
 
 Note that to allow for finer gridding, which is important for the inner disk, it is worth recompiling the fortran radlite code that these python scripts call after changing the maximum grid size defaults in configure.h to:
 
