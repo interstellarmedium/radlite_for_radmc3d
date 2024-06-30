@@ -241,7 +241,7 @@ def make_image(wind=False):
     infilename = "model_image.json"
 
     radmcfilepath = "./"
-    hitranfilename = "../../molecule_files/data_hitran.json"
+    hitranfilename = "data_hitran.json"
     if wind:
         if os.path.exists('wind_parameters.json'):
             myMod = Wind(infilename=infilename, hitranfilename=hitranfilename, radmcfilepath=radmcfilepath)
@@ -261,7 +261,7 @@ def make_spectrum(wind=False):
     inspecfilename = "spectrum.json"
 
     radmcfilepath = "./"
-    hitranfilename = "../../molecule_files/data_hitran.json"
+    hitranfilename = "data_hitran.json"
     if wind:
         if os.path.exists('wind_parameters.json'):
             myMod = Wind(infilename=infilename, hitranfilename=hitranfilename, radmcfilepath=radmcfilepath)
@@ -284,7 +284,7 @@ def make_plots(wind=False):
 
     infilename = "model_image.json"
     radmcfilepath = "./"
-    hitranfilename = "../../molecule_files/data_hitran.json"
+    hitranfilename = "data_hitran.json"
     if wind:
         if os.path.exists('wind_parameters.json'):
             myMod = Wind(infilename=infilename, hitranfilename=hitranfilename, radmcfilepath=radmcfilepath)
