@@ -362,7 +362,7 @@ def make_plots(wind=False):
     #Z_thick /= 1.5e13
     #ax.plot(R_thick, Z_thick,  color='black', ls='solid', lw=5, alpha=0.3)
     #----------------------------------------------------------
-    plt.savefig('gas_density_temperature.png')
+    plt.savefig('../figures/gas_density_temperature.png')
     plt.close(fig)
 
     # velocity field
@@ -409,7 +409,14 @@ def make_plots(wind=False):
         cb = plt.colorbar(c1)
         cb.set_label(r'$\log_{10}{\rho}$', rotation=270.)
         ax.quiver(Rv, Zv, vR_RZ, vZ_RZ, color='white')
-        plt.savefig('gas_non_azimuthal_velocity.png')
+        plt.savefig('../figures/gas_non_azimuthal_velocity.png')
         plt.close(fig)
 
+    return
+
+def delete_rundir():
+    # delete the rundir directories to save space
+    # (only do once fits files have been created!)
+    os.system('rm -r rundir_image')
+    os.system('rm -r rundir_spectrum')
     return

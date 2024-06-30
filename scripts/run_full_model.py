@@ -28,11 +28,19 @@ wind = True
 D_collim = 1
 v_terminal = 100
 
+delete_big_files = True
+
+
+
 print('-*-'*25)
 print('*** MAKE MODEL')
 make_model.setup(mstar=mstar, tstar=tstar, rstar=rstar, mdust=mdust, dusttogas=dusttogas,
           rin=rin, rdisk=rdisk, gap_rin=gap_rin, gap_rout=gap_rout,
           Tmid=Tmid, Tatm=Tatm, Tmax=Tmax)
+os.makedirs('./figures')
+
+if delete_big_files:
+    os.system('rm -r radmc')
 
 print('-*-'*25)
 print('*** RUN RADLITE')
@@ -42,6 +50,8 @@ if wind:
 run_radlite.make_plots(wind=wind)
 run_radlite.make_image(wind=wind)
 run_radlite.make_spectrum(wind=wind)
+if delete_big_files:
+    run_radlite.delete_rundir()
 os.chdir(cwd)
 
 print('-*-'*25)

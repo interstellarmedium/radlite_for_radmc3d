@@ -6,7 +6,7 @@ import sys
 sys.path.append('/Users/jpw/py/spectools_ir/')
 from spectools_ir.utils import extract_hitran_data
 
-def plot(path='./radlite/', filename='radlite_spectrum.fits', figfile='spectrum.png'):
+def plot(path='./radlite/', filename='radlite_spectrum.fits'):
     # set up plot parameters
     mpl.rc('xtick.major', size=5, pad=3, width=2)
     mpl.rc('ytick.major', size=5, pad=3, width=2)
@@ -72,6 +72,6 @@ def plot(path='./radlite/', filename='radlite_spectrum.fits', figfile='spectrum.
             ax.plot([w, w], [y1, y2], color='green')
 
     fig.tight_layout()
-    fig.savefig(figfile)
+    fig.savefig('./figures/spectrum.png')
     return
 

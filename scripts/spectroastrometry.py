@@ -139,6 +139,6 @@ def measure(path='./radlite/', filename='radlite_image.fits', slitPA=0, plot=Tru
         ax2.set_ylabel('Slit offset [milli-arcsec]')
         
         fig.tight_layout()
-        fig.savefig('spectroastrometry.png')
+        fig.savefig('./figures/spectroastrometry.png')
 
     return v, SA_mean, SA_stdev
