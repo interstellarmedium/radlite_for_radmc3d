@@ -14,7 +14,7 @@ from spectral_cube import SpectralCube
 from pvextractor import extract_pv_slice, Path
 from astropy.visualization import (AsinhStretch, LogStretch, ImageNormalize)
 
-def measure(path='./radlite/', filename='radlite_image.fits', slitPA=0, plot=True):
+def measure(path='./radlite/', filename='radlite_image.fits', slitPA=0, outputfig=None):
     # slit position angle in degrees, E of N
     if slitPA < 0 or slitPA > 360:
         print('slitPA must be between 0 and 360')
@@ -97,7 +97,7 @@ def measure(path='./radlite/', filename='radlite_image.fits', slitPA=0, plot=Tru
         SA_mean[i] = mu
         SA_stdev[i] = np.sqrt((np.nansum(s**2 * Iv) / Ivsum) - mu**2)
 
-    if plot:
+    if outputfig is not None:
         # turn off interactive plots (i.e., just make png files)
         plt.ioff()
         fig = plt.figure(figsize=(18, 6))
@@ -139,6 +139,6 @@ def measure(path='./radlite/', filename='radlite_image.fits', slitPA=0, plot=Tru
         ax2.set_ylabel('Slit offset [milli-arcsec]')
         
         fig.tight_layout()
-        fig.savefig('./figures/spectroastrometry.png')
+        fig.savefig('./figures/'+outputfig)
 
     return v, SA_mean, SA_stdev

@@ -48,8 +48,8 @@ def run_model(cwd, working_dir, clean_space=False, **keys):
 
     print('-*-'*27)
     print('*** SPECTROASTROMETRY')
-    v, SA, SA_err = spectroastrometry.measure(slitPA=0)
-    v, SA, SA_err = spectroastrometry.measure(slitPA=90)
+    v, SA, SA_err = spectroastrometry.measure(slitPA=0, outputfig='SA_minor.png')
+    v, SA, SA_err = spectroastrometry.measure(slitPA=90, outputfig='SA_major.png')
 
     print('*** MODEL SCRIPT FINISHED ***')
     os.chdir(cwd)
