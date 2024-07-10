@@ -88,14 +88,11 @@ def setup(mstar=['1.0*ms'], tstar=[4000], rstar=['2.0*rs'], mdust='1e-5*ms', dus
 
     # move files over to radmc_outputs for radlite to run
     # (I tried and failed to hide any errors that come up if you run this a second time and the files have already been moved...)
-    filelist = ["run_radlite.py", "image2fits.py", "model*.json", "spectrum.json", "line.inp", "molecule_co.inp"]
+    filelist = ["run_radlite.py", "data_hitran.json", "model*.json", "spectrum.json", "line.inp", "molecule_co.inp"]
     for file in filelist:
         cmd = "mv "+file+" radlite/"
         x = os.system(cmd + "> /dev/null")
         if x==0:
             print(cmd)
-
-    # get rid of an extraneous message file
-    os.remove('radmc3d.dat')
 
     return
