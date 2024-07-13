@@ -118,11 +118,16 @@ def image2fits(path="./rundir_image/outputdir/", filename="lineposvel_moldata_0_
             print(f"Error reading header in {path}{filename}")
             exit()
 
-        # read in model setup file to get physical distance - this is only specified in spectrum.json (!)
-        with open("../../spectrum.json", "r") as openfile:
+        # read in model setup files to get physical distance and inclination
+        with open("spectrum.json", "r") as openfile:
             dict = json.load(openfile)
         dist = dict["dist"]["value"]
         print(f"Reading distance from spectrum.json, d={dist} pc")
+
+        with open("model_image.json", "r") as openfile2:
+            dict = json.load(openfile2)
+        incl = dict["incl"]["value"]
+        print(f"Reading inclination from model_image.json, i={incl} degrees")
         
         nx = int(nx)
         ny = int(ny)
@@ -181,11 +186,14 @@ def image2fits(path="./rundir_image/outputdir/", filename="lineposvel_moldata_0_
                 line[ix, iy, iv] = Fnu[iv, ix, iy] - (f0 + (f1-f0)*iv/nv)
 
     # set up the headers and write them out as 2 extensions in a single fits file
+    # include inclination and distance as in radlite_spectrum.fits
     hdr = fits.Header()
     hdr['COMMENT'] = 'radlite image'
     hdr['COMMENT'] = 'continuum image is first extension'
     hdr['COMMENT'] = 'line datacube is second extension'
     hdr['COMMENT'] = 'created by image2fits notebook in radlite_for_radmc3d'
+    hdr["INCL_deg"] = incl
+    hdr["DIST_pc"] = dist
 
     hdu0 = fits.PrimaryHDU(header=hdr)
 
