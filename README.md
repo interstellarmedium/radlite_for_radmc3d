@@ -10,9 +10,9 @@ Note that to allow for finer gridding, which is important for the inner disk, it
 
 #define FRSIZE_MU   101
 
-(be careful about making them too big as it may compile but then crashes your [mac] computer when executing).
+(be careful about making them too big as it may compile but then crashes when executing).
 
-parameterized_disk.py is similar to ppdisk.py in the model examples of radmc3dPy but calculates the dust temperature analytically rather than relying on radmc3d mctherm (which is slow and noisy).
+parameterized_disk.py is similar to ppdisk.py in the model examples of radmc3dPy but calculates the dust temperature analytically rather than relying on radmc3d mctherm (which can be slow or noisy).
 Move it over to where the other radmc3dPy models are. For me, this is $HOME/.local/lib/python3.9/site-packages/radmc3dPy/models
 
 Instructions on running this version of radlite are in a notion page posted here
