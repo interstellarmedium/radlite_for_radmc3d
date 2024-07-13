@@ -1,6 +1,6 @@
 {
   "dist":           {
-                      "value":140.0,
+                      "value":100.0,
                       "comment":"Distance [in pc] between observer and source."
                     },
   "obsres":         {

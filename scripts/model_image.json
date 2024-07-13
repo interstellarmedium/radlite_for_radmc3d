@@ -92,7 +92,7 @@
 
 
   "vsampling":      {
-                      "value":1.5,
+                      "value":1.0,
                       "comment":"Frequency sampling [in km/s]."
                     },
   "ssampling":      {
@@ -100,7 +100,7 @@
                       "comment":"Spatial sampling [in AU]."
                     },
   "passband":       {
-                      "value":70.0,
+                      "value":100.0,
                       "comment":"Range [in km/s] over which the molecular lines will be calculated (so, a given line would be calculated from -passband to +passband)."
                     },
   "vlsr":           {
@@ -110,7 +110,7 @@
 
 
   "incl":           {
-                      "value":10.0,
+                      "value":20.0,
                       "comment":"Angle [in degrees] between the observer and the polar axis."
                     },
   "imwidth":       {

@@ -96,7 +96,7 @@
                       "comment":"Frequency sampling [in km/s]."
                     },
   "ssampling":      {
-                      "value":0.05,
+                      "value":0.1,
                       "comment":"Spatial sampling [in AU]."
                     },
   "passband":       {
@@ -110,11 +110,11 @@
 
 
   "incl":           {
-                      "value":10.0,
+                      "value":20.0,
                       "comment":"Angle [in degrees] between the observer and the polar axis."
                     },
   "imwidth":       {
-                      "value":5.0,
+                      "value":10.0,
                       "comment":"Image width [in AU]."
                     },
 

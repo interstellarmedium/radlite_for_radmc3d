@@ -66,11 +66,11 @@
 
 
   "min_mu":         {
-                      "value":4.62,
+                      "value":4.625,
                       "comment":"Minimum wavelength [in microns] of molecular lines to include."
                     },
   "max_mu":         {
-                      "value":4.65,
+                      "value":4.645,
                       "comment":"Maximum wavelength [in microns] of molecular lines to include."
                     },
   "min_abun":       {
@@ -86,7 +86,7 @@
                       "comment":"Minimum HITRAN intensity of given molecular species to include."
                     },
   "max_Eup":        {
-                      "value":4000,
+                      "value":5000,
                       "comment":"Maximum energy level [in cm^-1] of molecular lines to include."
                     },
 
@@ -96,7 +96,7 @@
                       "comment":"Frequency sampling [in km/s]."
                     },
   "ssampling":      {
-                      "value":0.05,
+                      "value":0.1,
                       "comment":"Spatial sampling [in AU]."
                     },
   "passband":       {
@@ -110,11 +110,11 @@
 
 
   "incl":           {
-                      "value":30.0,
+                      "value":20.0,
                       "comment":"Angle [in degrees] between the observer and the polar axis."
                     },
   "imwidth":       {
-                      "value":5.0,
+                      "value":10.0,
                       "comment":"Image width [in AU]."
                     },
 
