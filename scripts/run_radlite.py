@@ -95,11 +95,14 @@ class Wind(RDL.RadliteModel):
             print("Done calculating velocity components!\n")
         return
 
-def image2fits(path="./rundir_image/outputdir/", filename="lineposvel_moldata_0_1.dat", dist=100):
+def image2fits(path="./rundir_image/outputdir/", filename="lineposvel_moldata_0_1.dat"):
     # write the radlite image as a fits file
     # see RADLITE/telescope.F for the format aubroutine calc_write_line_posvel
     # note units are brightness temperature = lambda**2 * F_nu / 2*k
+    print("Writing radlite_image.fits")
 
+    # read in header of radlite file
+    # note that radmc calculations are made for a distance of 1pc
     with open(path+filename) as f:
         try:
             blank = f.readline()
@@ -112,8 +115,14 @@ def image2fits(path="./rundir_image/outputdir/", filename="lineposvel_moldata_0_
             nv = int(f.readline())
             nx, ny, dx, dy, rotang, xoff, yoff = [float(abc) for abc in f.readline().split()]
         except:
-            print("Error reading header")
+            print(f"Error reading header in {path}{filename}")
             exit()
+
+        # read in model setup file to get physical distance - this is only specified in spectrum.json (!)
+        with open("../../spectrum.json", "r") as openfile:
+            dict = json.load(openfile)
+        dist = dict["dist"]["value"]
+        print(f"Reading distance from spectrum.json, d={dist} pc")
         
         nx = int(nx)
         ny = int(ny)
@@ -231,8 +240,8 @@ def write_wind_parameters(D_collim=1, v_terminal=100, Rs=1, beta=2):
         "Rs": {"value":Rs, "comment":"Scale length in au"},
         "beta": {"value":beta, "comment":"power law index"}
     }
-    with open("wind_parameters.json", "w") as f:
-        json.dump(winddict, f, indent=4)
+    with open("wind_parameters.json", "w") as fileout:
+        json.dump(winddict, fileout, indent=4)
 
     return
 
