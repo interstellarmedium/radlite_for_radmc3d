@@ -1,12 +1,12 @@
 import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-from astropy.io import ascii, fits
+from astropy.io import fits
 import sys
 sys.path.append('/Users/jpw/py/spectools_ir/')
 from spectools_ir.utils import extract_hitran_data
 
-def plot(path='./radlite/', filename='radlite_spectrum.fits'):
+def plot(path='./radlite/', filename='radlite_spectrum.fits', normalized=False):
     # set up plot parameters
     mpl.rc('xtick.major', size=5, pad=3, width=2)
     mpl.rc('ytick.major', size=5, pad=3, width=2)
@@ -25,15 +25,19 @@ def plot(path='./radlite/', filename='radlite_spectrum.fits'):
 
     # load the spectrum
     # 0 is metadata (units, inclination, distance), no data
-    # 1 is the spectrum (lambda, nu, emission, spectrum, continuum)
+    # 1 is the spectrum (lambda, nu, emission = line, spectrum = line+continuum, continuum)
     # 2 is metadata on the transition (molecule, degeneracy, energy, etc)
     hdu = fits.open(path+filename)
     hdu.info()
     data = hdu[1].data
     wave = data["wavelength"]
-    flux = 1e3*data["spectrum"]              # just the line, no continuum
     wmin = np.min(wave)
     wmax = np.max(wave)
+
+    if normalized:
+        flux = 1 + data["emission"]/data["continuum"]
+    else:
+        flux = data["spectrum"]
     fmin = np.nanmin(flux)
     fmax = np.nanmax(flux)
 
@@ -56,7 +60,7 @@ def plot(path='./radlite/', filename='radlite_spectrum.fits'):
 
     ax.plot(wave, flux, lw=1, color='darkblue')
     ax.set_xlabel(r'$\lambda$ ($\mu$m)', fontsize = 20, labelpad=10)
-    ax.set_ylabel('Flux (mJy)', fontsize = 20, labelpad=10)
+    ax.set_ylabel('Flux (Jy)', fontsize = 20, labelpad=10)
 
     for w in hitran_CO['wave']:
         if w > wmin and w < wmax:
