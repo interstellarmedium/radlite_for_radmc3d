@@ -5,14 +5,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 import radmc3dPy
 
-def setup(mstar=['1.0*ms'], tstar=[4000], rstar=['2.0*rs'], mdust='1e-5*ms', dusttogas=0.001,
+def setup(mstar=['1.0*ms'], tstar=[4000], rstar=['2.0*rs'], mdisk='1e-3*ms', dusttogas=0.01,
           rin='0.05*au', rdisk='5*au', gap_rin='[0.0*au]', gap_rout='[0.0*au]', nphot=1e6):
 
     keys = {'model':'ppdisk', 'mstar':mstar, 'rstar':rstar, 'tstar':tstar,
-            'mdisk':mdust, 'dusttogas':dusttogas,
+            'mdisk':mdisk, 'dusttogas':dusttogas,
             'rin':rin, 'rdisk':rdisk,
             'gap_rin':gap_rin, 'gap_rout':gap_rout, 'gap_drfact':'[1e-8]',
-            'xbound':'[0.05*au, 0.5*au, 5.0*au]', 'nx':'[70, 70]', 'nphot':nphot,
+            'xbound':'[0.05*au, 0.5*au, 5.0*au]', 'nx':'[150, 150]', 'nphot':nphot,
             'nz':'0', 'binary':False}
 
     # setup in new format for radmc3d

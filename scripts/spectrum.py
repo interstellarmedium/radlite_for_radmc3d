@@ -62,8 +62,10 @@ def plot(path='./radlite/', filename='radlite_spectrum.fits', normalized=False):
     ax.set_xlabel(r'$\lambda$ ($\mu$m)', fontsize = 20, labelpad=10)
     if normalized:
         ax.set_ylabel('Line-to-continuum ratio', fontsize = 20, labelpad=10)
+        figfile = 'spectrum_normalized.png'
     else:
         ax.set_ylabel('Flux (Jy)', fontsize = 20, labelpad=10)
+        figfile = 'spectrum.png'
 
     for w in hitran_CO['wave']:
         if w > wmin and w < wmax:
@@ -79,6 +81,6 @@ def plot(path='./radlite/', filename='radlite_spectrum.fits', normalized=False):
             ax.plot([w, w], [y1, y2], color='green')
 
     fig.tight_layout()
-    fig.savefig('./figures/spectrum.png')
+    fig.savefig('./figures/'+figfile)
     return
 
