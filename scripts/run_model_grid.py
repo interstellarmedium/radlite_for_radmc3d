@@ -14,7 +14,7 @@ mstar = ['1.0*ms']
 rstar = ['2.0*rs']
 tstar = [4000]
 dusttogas = 0.01
-rdisk = '4.9*au'
+rdisk = '4.0*au'
 Tmax = 2500
 
 # parameters with a range of values - place in a list

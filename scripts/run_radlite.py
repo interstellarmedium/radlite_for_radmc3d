@@ -323,7 +323,7 @@ def make_plots(wind=False):
     Tgas_spline = RectBivariateSpline(theta, r, Tgas)
 
     nR = 200
-    R = np.logspace(-1.4, 0.8, nR)
+    R = np.logspace(-1.4, 0.7, nR)
     nZ = 100
     Z = np.logspace(-2, 0.7, nZ)
 
@@ -399,7 +399,7 @@ def make_plots(wind=False):
 
         # sparse grid because otherwise the quiver plot is too crowded
         nR = 15
-        Rv = np.logspace(-1.4, 0.8, nR)
+        Rv = np.logspace(-1.4, 0.7, nR)
         nZ = 10
         Zv = np.logspace(-2, 0.7, nZ)
         vrad_RZ = np.zeros((nZ, nR))
