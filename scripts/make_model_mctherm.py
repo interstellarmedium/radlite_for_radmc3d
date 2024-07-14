@@ -12,7 +12,7 @@ def setup(mstar=['1.0*ms'], tstar=[4000], rstar=['2.0*rs'], mdisk='1e-3*ms', dus
             'mdisk':mdisk, 'dusttogas':dusttogas,
             'rin':rin, 'rdisk':rdisk,
             'gap_rin':gap_rin, 'gap_rout':gap_rout, 'gap_drfact':'[1e-8]',
-            'xbound':'[0.05*au, 0.5*au, 5.0*au]', 'nx':'[150, 150]', 'nphot':nphot,
+            'xbound':'[0.05*au, 0.5*au, 5.0*au]', 'nx':'[100, 100]', 'nphot':nphot,
             'nz':'0', 'binary':False}
 
     # setup in new format for radmc3d
