@@ -41,7 +41,7 @@ def run_model(cwd, working_dir, clean_space=False, **keys):
 
     print('-*-'*27)
     print('*** PLOT SPECTRUM')
-    spectrum.plot()
+    spectrum.plot(normalized=False)
 
     print('-*-'*27)
     print('*** SPECTROASTROMETRY')

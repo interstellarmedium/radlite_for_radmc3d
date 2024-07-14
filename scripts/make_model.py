@@ -5,14 +5,14 @@ import os
 import numpy as np
 import radmc3dPy
 
-def setup(mstar=['1.0*ms'], tstar=[4000], rstar=['2.0*rs'], mdust='1e-5*ms', dusttogas=0.001,
+def setup(mstar=['1.0*ms'], tstar=[4000], rstar=['2.0*rs'], mdisk='1e-3*ms', dusttogas=0.01,
           rin='0.05*au', rdisk='5*au', gap_rin='[0.0*au]', gap_rout='[0.0*au]',
           Tmid=300, Tatm=700, Tmax=2500):
 
     keys = {'model':'parameterized_disk', 'mstar':mstar, 'rstar':rstar, 'tstar':tstar,
-            'mdisk':mdust, 'dusttogas':dusttogas,
+            'mdisk':mdisk, 'dusttogas':dusttogas,
             'rin':rin, 'rdisk':rdisk,
-            'xbound':'[0.05*au, 0.5*au, 5.0*au]', 'nx':'[150, 150]', 'nphot':1e6,
+            'xbound':'[0.05*au, 0.5*au, 5.0*au]', 'nx':'[150, 150]',
             'nz':'0', 'binary':False,
             'Tmid':Tmid, 'Tatm':Tatm, 'Tmax':Tmax, 'writeDustTemp':True}
 

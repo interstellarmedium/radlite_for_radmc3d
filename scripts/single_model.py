@@ -22,9 +22,6 @@ def run_model(cwd, working_dir, clean_space=False, **keys):
     print('*** MAKE MODEL')
     model_keys = keys['model']
     make_model.setup(**model_keys)
-    #make_model.setup(mstar=mstar, tstar=tstar, rstar=rstar, mdust=mdust, dusttogas=dusttogas,
-    #        rin=rin, rdisk=rdisk, gap_rin=gap_rin, gap_rout=gap_rout,
-    #        Tmid=Tmid, Tatm=Tatm, Tmax=Tmax)
     os.makedirs(working_dir+'figures')
     if clean_space:
         os.system('rm -r radmc')
@@ -44,7 +41,7 @@ def run_model(cwd, working_dir, clean_space=False, **keys):
 
     print('-*-'*27)
     print('*** PLOT SPECTRUM')
-    spectrum.plot()
+    spectrum.plot(normalized=False)
 
     print('-*-'*27)
     print('*** SPECTROASTROMETRY')
