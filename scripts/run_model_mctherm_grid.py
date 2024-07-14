@@ -18,7 +18,7 @@ rdisk = '4.9*au'
 nphot = 1e6
 
 # parameters with a range of values - place in a list
-mdisk = ['1e-5*ms', '1e-4*ms']
+mdisk = ['1e-4*ms', '1e-3*ms']
 rin = ['0.05*au', '0.1*au']
 
 wind = True
